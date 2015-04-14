@@ -6,7 +6,7 @@ Requirements
 It uses wget and curl packages and the website should have a sitemap.xml to work.
 
 
-Executing the script:
+Executing the script
 ----------------------
 Edit the varnish-cache-warmer.sh and replace website.com by your website.
 
