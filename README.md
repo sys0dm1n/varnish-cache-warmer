@@ -8,7 +8,7 @@ It uses wget and curl packages and the website should have a sitemap.xml to work
 
 Executing the script
 ----------------------
-Edit the varnish-cache-warmer.sh and replace website.com by your website.
+You can pass as many URLs or IP as you want to the script like this:
 
-    # chmod +x varnish-cache-warmer.sh
-    # ./varnish-cache-warmer.sh
+    $ sudo chmod +x varnish-cache-warmer.sh
+    $ ./varnish-cache-warmer.sh example1.com example2.com example3.com
