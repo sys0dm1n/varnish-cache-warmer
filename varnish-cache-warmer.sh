@@ -7,16 +7,16 @@
 
 warm_varnish() {
     echo "Warming cache for $1"
-    wget --quiet http://$1/sitemap.xml --no-cache --output-document - | egrep -o "http(s?)://$1[^ \"\'()\<>]+" | while read line; do
+    curl -sL -A 'Cache Warmer' http://$1/sitemap.xml | egrep -o "http(s?)://$1[^ \"\'()\<>]+" | while read line; do
         if [[ $line == *.xml ]]
         then
             newURL=$line
-            wget --quiet $newURL --no-cache --output-document - | egrep -o "http(s?)://$1[^ \"\'()\<>]+" | while read newline; do
-                time curl -A 'Cache Warmer' -sL -w "%{http_code} %{url_effective}\n" $newline -o /dev/null 2>&1
+            curl -sL -A 'Cache Warmer' $newURL | egrep -o "http(s?)://$1[^ \"\'()\<>]+" | while read newline; do
+                time curl -sL -A 'Cache Warmer' -sL -w "%{http_code} %{url_effective}\n" $newline -o /dev/null 2>&1
                 echo $newline
             done
         else
-            time curl -A 'Cache Warmer' -sL -w "%{http_code} %{url_effective}\n" $line -o /dev/null 2>&1
+            time curl -sL -A 'Cache Warmer' -sL -w "%{http_code} %{url_effective}\n" $line -o /dev/null 2>&1
             echo $line
         fi
     done
