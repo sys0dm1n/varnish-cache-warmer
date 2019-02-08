@@ -1,10 +1,10 @@
 # varnish-cache-warmer
-This is a bash script that uses wget and curl to warm up Varnish by targeting the sitemap.xml of the website
+
+This is a bash script that uses curl to warm up Varnish by targeting the sitemap.xml of the website
 
 ## Requirements
 
-It uses wget and curl packages and the website should have a sitemap.xml to work.
-
+It uses the curl package and the website should have a sitemap.xml to work.
 
 ## Executing the script
 
